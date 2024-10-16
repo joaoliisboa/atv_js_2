@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Atividade</h1>
+        <p>Aluno: João Felipe de Oliveira Lisboa</p>
+    </header>
+    <nav>
+        <ul id="menu">
+            <li class="main-item"><a href="#" id="pesquisa-link">Pesquisa</a>
+                <ul id="menu_pesquisa">
+                    <li><a href="#ajax">AJAX</a></li>
+                    <li><a href="#promises">Promises</a></li>
+                    <li><a href="#fetch_api">Fetch API</a></li>
+                    <li><a href="#async_await">Async / Await</a></li>
+                    <li><a href="#vantagens">Vantagens</a></li>
+                    <li><a href="#desvantagens">Desvantagens</a></li>
+                </ul>
+            </li>
+            <li class="main-item"><a href="#" id="outros-link">Outros</a>
+                <ul id="menu_outros">
+                    <li><a href="#hoisting">Hoisting</a></li>
+                    <li><a href="#arrow_functions">Arrow Functions</a></li>
+                    <li><a href="#destructuring">Destructuring</a></li>
+                </ul>
+            </li>
+            <li class="main-item"><a href="#demo">Buscar CEP</a></li>
+        </ul>
+    </nav>
+    <div id="pesquisa">
+        <section id="ajax">
+            <h3>AJAX</h3>
+            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.<br><br>Exemplo:</p>
+            <div id="codearea"><textarea></textarea></div>
+        </section>
+        <section id="promises">
+            <h3>promises</h3>
+            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.<br><br>Exemplo:</p>
+            <div id="codearea"><textarea></textarea></div>
+        </section>
+        <section id="fetch_api">
+            <h3>fetch API</h3>
+            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.<br><br>Exemplo:</p>
+            <div id="codearea"><textarea></textarea></div>
+        </section>
+        <section id="async_await">
+            <h3>Async / Await</h3>
+            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.<br><br>Exemplo:</p>
+            <div id="codearea"><textarea></textarea></div>
+        </section>
+        <section id="vantagens">
+            <h3>Vantagens</h3>
+            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
+        </section>
+        <section id="desvantagens">
+            <h3>Desvantagens</h3>
+            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
+        </section>
+    </div>
+    <div id="outros">
+        <section id="hoisting">
+            <h3>Hoisting</h3>
+            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
+        </section>
+        <section id="arrow_functions">
+            <h3>Arrow Functions</h3>
+            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
+        </section>
+        <section id="destructuring">
+            <h3>Destructuring</h3>
+            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
+        </section>
+    </div>
+    <div id="demo">
+        <h1>The XMLHttpRequest Object</h1>
+        <input type="text" name="cep" id="cep" placeholder="Digite seu CEP">
+        <br>
+        <button type="button" onclick="loadDoc()">Pesquisar CEP - AJAX</button>
+        <button type="button" onclick="loadDoc()">Pesquisar CEP - Fetch API</button>
+        <button type="button" onclick="loadDoc()">Pesquisar CEP - Async/Await</button>
+        <br>
+        <input type="text" id="logradouro" placeholder="Logradouro">
+        <br>
+        <input type="text" id="complemento" placeholder="Complemento">
+        <br>
+        <input type="text" id="bairro" placeholder="Bairro">
+        <br>
+        <input type="text" id="localidade" placeholder="Cidade">
+        <br>
+        <input type="text" id="uf" placeholder="UF">
+    </div>
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const pesquisaLink = document.getElementById('pesquisa-link');
+    const outrosLink = document.getElementById('outros-link');
+    const menuPesquisa = document.getElementById('menu_pesquisa');
+    const menuOutros = document.getElementById('menu_outros');
+
+    pesquisaLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        menuPesquisa.style.display = menuPesquisa.style.display === 'block' ? 'none' : 'block';
+        menuOutros.style.display = 'none';  // Hide "Outros" if open
+    });
+
+    outrosLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        menuOutros.style.display = menuOutros.style.display === 'block' ? 'none' : 'block';
+        menuPesquisa.style.display = 'none';  // Hide "Pesquisa" if open
+    });
+
+    // Hide menus when clicking outside of them
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.main-item')) {
+            menuPesquisa.style.display = 'none';
+            menuOutros.style.display = 'none';
+        }
+    });
+});
+
+        function loadDoc() {
+          let cep =  parseInt(document.getElementById("cep").value); 
+          let xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+              // readState 4 = resposta recebida
+              // status 200 = resposta OK
+              console.log(this.readyState);
+            if (this.readyState == 4 && this.status == 200) {
+              let endereco = JSON.parse(this.responseText); 
+              document.getElementById("logradouro").value=endereco.logradouro;
+              document.getElementById("complemento").value=endereco.complemento ;
+              document.getElementById("bairro").value=endereco.bairro ;
+              document.getElementById("localidade").value=endereco.localidade ;
+              document.getElementById("uf").value=endereco.uf ;
+            }
+          };
+          console.log('antes do open cep:'+cep);
+          xhttp.open("GET", "https://viacep.com.br/ws/"+cep+"/json", true);
+          console.log('antes do send');
+          xhttp.send();
+          console.log('depois do send');
+        }
+    </script>
+
+</body>
+</html>
