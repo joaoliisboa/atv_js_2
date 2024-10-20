@@ -19,8 +19,6 @@
                     <li><a href="#promises">Promises</a></li>
                     <li><a href="#fetch_api">Fetch API</a></li>
                     <li><a href="#async_await">Async / Await</a></li>
-                    <li><a href="#vantagens">Vantagens</a></li>
-                    <li><a href="#desvantagens">Desvantagens</a></li>
                 </ul>
             </li>
             <li class="main-item"><a href="#" id="outros-link">Outros</a>
@@ -28,6 +26,7 @@
                     <li><a href="#hoisting">Hoisting</a></li>
                     <li><a href="#arrow_functions">Arrow Functions</a></li>
                     <li><a href="#destructuring">Destructuring</a></li>
+                    <li><a href="#closure">Closure</a></li>
                 </ul>
             </li>
             <li class="main-item"><a href="#demo">Buscar CEP</a></li>
@@ -36,45 +35,207 @@
     <div id="pesquisa">
         <section id="ajax">
             <h3>AJAX</h3>
-            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.<br><br>Exemplo:</p>
-            <div id="codearea"><textarea></textarea></div>
+            <p>JavaScript e XML assíncronos (AJAX) são uma combinação de tecnologias de desenvolvimento de aplicações Web que as tornam mais responsivas à interação do usuário. Sempre que seus usuários interagem com uma aplicação Web, como quando clicam em botões ou caixas de seleção, o navegador troca dados com o servidor remoto. A troca de dados pode recarregar as páginas e interromper a experiência do usuário. Com o AJAX, as aplicações Web podem enviar e receber dados em segundo plano para que apenas pequenas partes da página sejam atualizadas conforme necessário.<br><br><u>Exemplo:</u></p>
+            <div id="codearea">
+                <textarea>let xhttp = new XMLHttpRequest();
+xhttp.open('GET', 'https://api.example.com/dados', true);
+xhttp.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+        let data = JSON.parse(this.responseText);
+        console.log(data);
+    }
+};
+xhttp.send();</textarea>
+            </div>
+            <p><u>Vantagens:</u></p>
+                <ul>
+                    <li>Funciona em todos os navegadores modernos e antigos.</li>
+                    <li>Dá bastante controle sobre a requisição, incluindo monitoramento de estados (progresso, cancelamento, etc.).</li>
+                </ul>
+            <p><u>Desvantagens:</u></p>
+                <ul>
+                    <li>Escrever AJAX pode resultar em código prolixo e difícil de ler, com vários callbacks para lidar com respostas e erros.</li>
+                    <li>Com o aumento da complexidade da aplicação, o código baseado em callbacks tende a ficar difícil de gerenciar.</li>
+                    <li>A Fetch API e Promises são formas mais modernas e recomendadas de realizar requisições assíncronas.</li>
+                </ul>
         </section>
         <section id="promises">
             <h3>promises</h3>
-            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.<br><br>Exemplo:</p>
-            <div id="codearea"><textarea></textarea></div>
+            <p>Em JavaScript, uma Promise é um objeto que representa a eventual conclusão (ou falha) de uma operação assíncrona e seu valor resultante. As promises facilitam o gerenciamento de operações que não retornam um resultado imediatamente, como requisições a uma API ou leitura de arquivos, permitindo que o código continue executando enquanto espera pela conclusão da operação.</p>
+            <p>Uma promise pode estar em um dos três estados:</p>
+            <ul>
+                <li type="1">Pending (pendente): Estado inicial, antes de a operação assíncrona ser concluída.</li>
+                <li type="1">Fulfilled (resolvida): A operação assíncrona foi concluída com sucesso e o valor resultante está disponível.</li>
+                <li type="1">Rejected (rejeitada): A operação falhou e um motivo (erro) é fornecido.</li>
+            </ul>
+            <p>Você pode "escutar" o resultado de uma promise usando os métodos .then() e .catch():</p>
+            <ul>
+                <li>.then() é executado quando a promise é resolvida com sucesso.</li>
+                <li>.catch() é executado quando a promise é rejeitada.</li>
+            </ul>
+            <p><u>Exemplo:</u></p>
+            <div id="codearea">
+                <textarea>function obterDadosUsuario(userId) {
+    return new Promise((resolve, reject) => {
+        console.log("Obtendo dados...");
+                  
+        setTimeout(() => {
+            const database = {
+                1: { id: 1, nome: 'Joao', idade: 30 },
+                2: { id: 2, nome: 'Maria', idade: 25 }
+            };
+                  
+            const user = database[userId];
+                  
+            if (user) {
+                resolve(user);
+            } else {
+                reject("Usuario não encontrado!"); 
+            }
+        });
+    });
+}
+                  
+obterDadosUsuario(1)
+    .then(user => {
+        console.log("Usuario encontrado:", user);
+    })
+    .catch(error => {
+        console.log("Error:", error);
+    });</textarea>
+            </div>
+            <p><u>Vantagens:</u></p>
+                <ul>
+                    <li>Promises evitam o famoso "callback hell", facilitando o encadeamento de operações assíncronas com .then() e .catch().</li>
+                    <li>Introduzido no ECMAScript 6, é uma forma moderna de lidar com operações assíncronas.</li>
+                    <li>O encadeamento de Promises permite que múltiplas operações assíncronas sejam executadas de forma sequencial ou paralela.</li>
+                </ul>
+            <p><u>Desvantagens:</u></p>
+                <ul>
+                    <li>Se houver muitos .then() ou operações condicionais, pode acabar se tornando difícil de seguir.</li>
+                    <li>Um erro em uma parte da Promise pode interromper a execução da cadeia.</li>
+                </ul>
         </section>
         <section id="fetch_api">
             <h3>fetch API</h3>
-            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.<br><br>Exemplo:</p>
-            <div id="codearea"><textarea></textarea></div>
+            <p>A Fetch API é uma interface moderna que permite realizar requisições HTTP (como GET, POST) de forma assíncrona. Diferente de técnicas mais antigas, como XMLHttpRequest, a Fetch API retorna uma Promise, facilitando o uso com then(), catch(), ou com async/await.<br><br><u>Exemplo:</u></p>
+            <div id="codearea">
+                <textarea>fetch('https://api.example.com/dados')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Erro na requisição:', error));
+                  </textarea>
+            </div>
+            <p><u>Vantagens:</u></p>
+                <ul>
+                    <li>Comparado ao XMLHttpRequest, fetch() é mais simples e elegante de usar.</li>
+                    <li>A Fetch API retorna Promises, o que facilita o tratamento de requisições assíncronas.</li>
+                    <li>Muito mais leve e simples de usar do que o XMLHttpRequest.</li>
+                    <li>Pode ser facilmente usada com async/await para melhorar ainda mais a legibilidade do código</li>
+                </ul>
+            <p><u>Desvantagens:</u></p>
+                <ul>
+                    <li>O fetch() não lida automaticamente com certas situações, como abortar uma requisição ou acompanhar progresso de upload, o que o XMLHttpRequest faz nativamente.</li>
+                    <li>O fetch() não rejeita Promises em erros HTTP (como 404 ou 500); apenas rejeita em problemas de rede. Isso significa que é necessário verificar o status manualmente.</li>
+                </ul>
         </section>
         <section id="async_await">
             <h3>Async / Await</h3>
-            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.<br><br>Exemplo:</p>
-            <div id="codearea"><textarea></textarea></div>
-        </section>
-        <section id="vantagens">
-            <h3>Vantagens</h3>
-            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
-        </section>
-        <section id="desvantagens">
-            <h3>Desvantagens</h3>
-            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
+            <p>O async/await é uma sintaxe introduzida no ES2017 que facilita o uso de Promises, tornando o código assíncrono mais legível. O async define uma função assíncrona que automaticamente retorna uma Promise, enquanto await pausa a execução da função até que a Promise seja resolvida.<br><br><u>Exemplo:</u></p>
+            <div id="codearea">
+                <textarea>async function obterDados() {
+    try {
+        const response = await fetch('https://api.example.com/dados');
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+    }
+}
+                  
+obterDados();</textarea>
+            </div>
+            <p><u>Vantagens:</u></p>
+                <ul>
+                    <li>Async/await permite escrever código assíncrono que parece síncrono, o que melhora a legibilidade e manutenção do código.</li>
+                    <li>Com try/catch, o tratamento de erros fica mais simples e claro, em vez de lidar com várias chamadas de .catch().</li>
+                    <li>Async/await facilita a escrita de código assíncrono sequencial, o que é mais intuitivo.</li>
+                </ul>
+            <p><u>Desvantagens:</u></p>
+                <ul>
+                    <li>Embora amplamente suportado, navegadores muito antigos podem não suportar async/await sem transpilers (como Babel).</li>
+                    <li>Se usado de maneira incorreta, pode resultar em execução sequencial desnecessária em vez de paralela, o que pode impactar a performance.</li>
+                </ul>
         </section>
     </div>
     <div id="outros">
         <section id="hoisting">
             <h3>Hoisting</h3>
-            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
+            <p>Em JavaScript, hoisting é o comportamento que move as declarações de variáveis e funções para o topo de seu escopo (global ou de função) durante a fase de compilação. No entanto, somente as declarações são "elevadas", enquanto as inicializações (atribuições de valor) permanecem no local original.</p>
+            <div id="codearea">
+                <textarea>Variavel:
+console.log(x); // undefined
+var x = 5;
+console.log(x); // 5
+
+Função:
+sayHello(); // "Hello"
+function sayHello() {
+    console.log("Hello");
+}</textarea>
+            </div>
         </section>
         <section id="arrow_functions">
             <h3>Arrow Functions</h3>
-            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
+            <p>As arrow functions em JavaScript são uma maneira mais concisa de escrever funções. Introduzidas no ECMAScript 6 (ES6), elas oferecem uma sintaxe simplificada e algumas diferenças comportamentais em relação às funções tradicionais.</p>
+            <div id="codearea">
+                <textarea>Forma tradicional:
+function soma(a, b) {
+    return a + b;
+}
+
+Usando arrow function:
+const soma = (a, b) => a + b;</textarea>
+            </div>
         </section>
         <section id="destructuring">
             <h3>Destructuring</h3>
-            <p>Lorem ipsum dolor sit amet. Ex explicabo assumenda non veniam placeat rem quia eligendi eos architecto dolores in quia ipsa eos facilis laborum. In velit omnis 33 quia aliquam est soluta dolor rem aperiam sint et rerum unde sit molestiae recusandae et eligendi iusto. Aut explicabo libero et numquam debitis et assumenda ducimus sed enim incidunt.</p>
+            <p>Destructuring em JavaScript é uma maneira concisa de extrair valores de arrays ou propriedades de objetos e atribuí-los a variáveis distintas. Ele permite "desestruturar" uma estrutura complexa (como arrays e objetos) em variáveis mais simples, o que torna o código mais limpo e legível.</p>
+            <div id="codearea">
+                <textarea>Array:
+const numeros = [1, 2, 3];
+const [a, b, c] = numeros;
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
+
+Objeto:
+const pessoa = {
+    nome: "João",
+    idade: 25,
+    cidade: "São Paulo"
+};
+const { nome, idade, cidade } = pessoa;
+console.log(nome); // João
+console.log(idade); // 25
+console.log(cidade); // São Paulo</textarea>
+            </div>
+        </section>
+        <section id="closure">
+            <h3>Closure</h3>
+            <p>Em JavaScript, closure (ou fechamento) é uma função que "lembra" o ambiente onde foi criada, mesmo após esse ambiente ter sido executado. Isso significa que a função pode acessar variáveis definidas fora do seu escopo, mesmo após o escopo externo ter terminado.</p>
+            <div id="codearea">
+                <textarea>function criaContador() {
+    let contador = 0;
+    return function() {
+        contador++;
+        return contador;
+    };
+}
+const contador1 = criaContador();
+console.log(contador1()); // 1
+console.log(contador1()); // 2</textarea>
+            </div>
         </section>
     </div>
     <div id="demo">
@@ -82,8 +243,8 @@
         <input type="text" name="cep" id="cep" placeholder="Digite seu CEP">
         <br>
         <button type="button" onclick="loadDoc()">Pesquisar CEP - AJAX</button>
-        <button type="button" onclick="loadDoc()">Pesquisar CEP - Fetch API</button>
-        <button type="button" onclick="loadDoc()">Pesquisar CEP - Async/Await</button>
+        <button type="button" onclick="loadDoc2()">Pesquisar CEP - Fetch API</button>
+        <button type="button" onclick="loadDoc3()">Pesquisar CEP - Async/Await</button>
         <br>
         <input type="text" id="logradouro" placeholder="Logradouro">
         <br>
@@ -98,32 +259,31 @@
 
     <script>
 
-document.addEventListener('DOMContentLoaded', function() {
-    const pesquisaLink = document.getElementById('pesquisa-link');
-    const outrosLink = document.getElementById('outros-link');
-    const menuPesquisa = document.getElementById('menu_pesquisa');
-    const menuOutros = document.getElementById('menu_outros');
+        document.addEventListener('DOMContentLoaded', function() {
+            const pesquisaLink = document.getElementById('pesquisa-link');
+            const outrosLink = document.getElementById('outros-link');
+            const menuPesquisa = document.getElementById('menu_pesquisa');
+            const menuOutros = document.getElementById('menu_outros');
 
-    pesquisaLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        menuPesquisa.style.display = menuPesquisa.style.display === 'block' ? 'none' : 'block';
-        menuOutros.style.display = 'none';  // Hide "Outros" if open
-    });
+            pesquisaLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                menuPesquisa.style.display = menuPesquisa.style.display === 'block' ? 'none' : 'block';
+                menuOutros.style.display = 'none';  // Hide "Outros" if open
+            });
 
-    outrosLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        menuOutros.style.display = menuOutros.style.display === 'block' ? 'none' : 'block';
-        menuPesquisa.style.display = 'none';  // Hide "Pesquisa" if open
-    });
+            outrosLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                menuOutros.style.display = menuOutros.style.display === 'block' ? 'none' : 'block';
+                menuPesquisa.style.display = 'none';  // Hide "Pesquisa" if open
+            });
 
-    // Hide menus when clicking outside of them
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.main-item')) {
-            menuPesquisa.style.display = 'none';
-            menuOutros.style.display = 'none';
-        }
-    });
-});
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.main-item')) {
+                    menuPesquisa.style.display = 'none';
+                    menuOutros.style.display = 'none';
+                }
+            });
+        });
 
         function loadDoc() {
           let cep =  parseInt(document.getElementById("cep").value); 
@@ -147,6 +307,49 @@ document.addEventListener('DOMContentLoaded', function() {
           xhttp.send();
           console.log('depois do send');
         }
+
+        function loadDoc2() {
+            let cep = parseInt(document.getElementById("cep").value);
+            console.log('antes do fetch cep:' + cep);    
+            fetch("https://viacep.com.br/ws/" + cep + "/json")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(endereco => {
+                    document.getElementById("logradouro").value = endereco.logradouro;
+                    document.getElementById("complemento").value = endereco.complemento;
+                    document.getElementById("bairro").value = endereco.bairro;
+                    document.getElementById("localidade").value = endereco.localidade;
+                    document.getElementById("uf").value = endereco.uf;
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+            console.log('depois do fetch');
+        }
+
+                async function loadDoc3() {
+                    let cep = parseInt(document.getElementById("cep").value);    
+                    console.log('antes do fetch cep:' + cep);
+                    try {
+                        let response = await fetch("https://viacep.com.br/ws/" + cep + "/json");        
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        let endereco = await response.json();
+                        document.getElementById("logradouro").value = endereco.logradouro;
+                        document.getElementById("complemento").value = endereco.complemento;
+                        document.getElementById("bairro").value = endereco.bairro;
+                        document.getElementById("localidade").value = endereco.localidade;
+                        document.getElementById("uf").value = endereco.uf;
+                    } catch (error) {
+                        console.error('There has been a problem with your fetch operation:', error);
+                    }
+                    console.log('depois do fetch');
+                }        
     </script>
 
 </body>
