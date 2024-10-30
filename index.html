@@ -77,16 +77,13 @@ xhttp.send();</textarea>
             <div id="codearea">
                 <textarea>function obterDadosUsuario(userId) {
     return new Promise((resolve, reject) => {
-        console.log("Obtendo dados...");
-                  
+        console.log("Obtendo dados...");                 
         setTimeout(() => {
             const database = {
                 1: { id: 1, nome: 'Joao', idade: 30 },
                 2: { id: 2, nome: 'Maria', idade: 25 }
-            };
-                  
-            const user = database[userId];
-                  
+            };                  
+            const user = database[userId];              
             if (user) {
                 resolve(user);
             } else {
@@ -94,8 +91,7 @@ xhttp.send();</textarea>
             }
         });
     });
-}
-                  
+}               
 obterDadosUsuario(1)
     .then(user => {
         console.log("Usuario encontrado:", user);
@@ -123,8 +119,7 @@ obterDadosUsuario(1)
                 <textarea>fetch('https://api.example.com/dados')
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.error('Erro na requisição:', error));
-                  </textarea>
+    .catch(error => console.error('Erro na requisição:', error));</textarea>
             </div>
             <p><u>Vantagens:</u></p>
                 <ul>
@@ -151,8 +146,7 @@ obterDadosUsuario(1)
     } catch (error) {
         console.error('Erro na requisição:', error);
     }
-}
-                  
+}              
 obterDados();</textarea>
             </div>
             <p><u>Vantagens:</u></p>
@@ -331,25 +325,25 @@ console.log(contador1()); // 2</textarea>
             console.log('depois do fetch');
         }
 
-                async function loadDoc3() {
-                    let cep = parseInt(document.getElementById("cep").value);    
-                    console.log('antes do fetch cep:' + cep);
-                    try {
-                        let response = await fetch("https://viacep.com.br/ws/" + cep + "/json");        
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        let endereco = await response.json();
-                        document.getElementById("logradouro").value = endereco.logradouro;
-                        document.getElementById("complemento").value = endereco.complemento;
-                        document.getElementById("bairro").value = endereco.bairro;
-                        document.getElementById("localidade").value = endereco.localidade;
-                        document.getElementById("uf").value = endereco.uf;
-                    } catch (error) {
-                        console.error('There has been a problem with your fetch operation:', error);
-                    }
-                    console.log('depois do fetch');
-                }        
+        async function loadDoc3() {
+            let cep = parseInt(document.getElementById("cep").value);    
+            console.log('antes do fetch cep:' + cep);
+            try {
+                let response = await fetch("https://viacep.com.br/ws/" + cep + "/json");        
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                let endereco = await response.json();
+                document.getElementById("logradouro").value = endereco.logradouro;
+                document.getElementById("complemento").value = endereco.complemento;
+                document.getElementById("bairro").value = endereco.bairro;
+                document.getElementById("localidade").value = endereco.localidade;
+                document.getElementById("uf").value = endereco.uf;
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+            console.log('depois do fetch');
+        }        
     </script>
 
 </body>
